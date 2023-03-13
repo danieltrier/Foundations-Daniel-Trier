@@ -1,62 +1,93 @@
+/* reseting css of the whole page */
 * {
   box-sizing: content-box;
+  padding: 0;
+  margin: 0;
 }
+
 body {
-  background-color: mediumseagreen;
+  background: mediumseagreen;
   font-family: "Ubuntu", sans-serif;
   color: whitesmoke;
 }
-
-.logo {
-  width: 100px;
+nav {
   height: 100px;
-  border-radius: 25px;
 }
-.heading {
-  display: inline-block;
+nav .container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: darkcyan;
+}
+nav a:hover {
+  color: bisque;
+}
+nav .navigation {
+  display: flex;
+  justify-content: space-around;
+}
+nav ul li {
+  padding-right: 50px;
+  list-style: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-weight: bolder;
+}
+.logo {
+  padding-left: 20px;
+  font-size: xx-large;
 }
 
 .image {
-  width: 200px;
-  height: 200px;
-  border-radius: 5px;
-  float: left;
-  margin-right: 5px;
-  display: block;
+  border-radius: 50px;
+  max-width: 250px;
+  max-height: 250px;
+  padding: 0px 10px;
 }
-.image-right {
-  width: 200px;
-  height: 200px;
-  border-radius: 5px;
-  float: right;
-  margin-left: 5px;
-  display: block;
-}
-header {
-  display: inline-block;
-}
-nav {
-  display: inline-block;
-}
-nav li {
-  display: inline;
-  margin: 5px;
-}
-nav li a {
-  text-decoration: none;
-  color: whitesmoke;
-  font-weight: bold;
-}
-.container {
-  width: 525px;
+main .container {
+  max-width: 800px;
   margin: 50px auto;
-  padding: 25px 20px;
-  background-color: rgb(93, 202, 142);
-  border-radius: 25px;
+  display: flex;
 }
-.head {
-  display: block;
-  width: 700px;
-  padding: 25px 20px;
+
+main .container2 {
+  max-width: 800px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.box {
+  flex: 1;
+}
+@media (max-width: 768px) {
+  nav .container {
+    flex-direction: column;
+  }
+}
+nav .container ul {
+  margin-left: auto;
+  padding-left: 5px;
+  padding-bottom: 20px;
+}
+@media (max-width: 768px) {
+  main .container,
+  main .container2 {
+    flex-direction: column-reverse;
+    max-width: 300px;
+  }
+
+  .boxes {
+    display: block;
+  }
+  main .container img,
+  main .container2 img {
+    margin: 0 auto;
+    width: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
