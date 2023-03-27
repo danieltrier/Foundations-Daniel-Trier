@@ -11,5 +11,5 @@ def login():
     return render_template('simple_pages/login.html')
 
 @blueprint.route('/register')
-def registration():
+def register():
     return render_template('simple_pages/register.html')
