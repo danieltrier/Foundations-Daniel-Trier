@@ -1,3 +1,4 @@
+from .models import User
 from flask import Blueprint, render_template
 
 blueprint = Blueprint('simple_pages', __name__)
