@@ -1,5 +1,5 @@
 from .models import User
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, current_app
 
 blueprint = Blueprint('simple_pages', __name__)
 
@@ -21,5 +21,7 @@ def register():
 
 @blueprint.route('/users')
 def users():
-    all_users = User.query.all()
-    return render_template('simple_pages/users.html', users=all_users)
+    page_number = request.args.get('page', 1, type=int)
+    users_pagination = User.query.paginate(
+        page=page_number, per_page=current_app.config['USERS_PER_PAGE'])
+    return render_template('simple_pages/users.html', users_pagination=users_pagination)
