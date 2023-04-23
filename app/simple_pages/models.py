@@ -11,7 +11,7 @@ class User(db.Model, CRUDMixin):
     tasks = db.relationship('Task', backref='user', lazy=True)
 
 
-class Task(db.Model):
+class Task(db.Model, CRUDMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

@@ -9,16 +9,6 @@ def index():
     return render_template('simple_pages/index.html')
 
 
-@blueprint.route('/login')
-def login():
-    return render_template('simple_pages/login.html')
-
-
-@blueprint.route('/register')
-def register():
-    return render_template('simple_pages/register.html')
-
-
 @blueprint.route('/users')
 def users():
     page_number = request.args.get('page', 1, type=int)

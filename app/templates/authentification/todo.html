@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %}TASKBOX{% endblock %} {% block body
+%}
+<form method="POST">
+  <label for="name">Taskname:</label>
+  <input type="text" name="name" id="name" />
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" />
+  <label for="time">Time:</label>
+  <input type="time" id="time" name="time" />
+  <button type="submit">add</button>
+</form>
+
+<ul>
+  {% for todo in todos %}
+  <li>{{ todo.id }}</li>
+  <li>{{ todo.name }}</li>
+  <li>{{ todo.date.strftime('%d.%m.%Y') }}</li>
+  <li>{{ todo.time.strftime('%H:%M') }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
