@@ -15,12 +15,3 @@ def users():
     users_pagination = User.query.paginate(
         page=page_number, per_page=current_app.config['USERS_PER_PAGE'])
     return render_template('simple_pages/users.html', users_pagination=users_pagination)
-
-
-@blueprint.route('/run-seed')
-def run_seed():
-    if not User.query.filter_by(last_name='Müller').first():
-        import app.scripts.seed
-        return 'Database seed completed!'
-    else:
-        return 'Nothing to run.'
