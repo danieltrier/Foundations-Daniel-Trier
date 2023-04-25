@@ -5,6 +5,7 @@ from app.extensions.database import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_required, logout_user, login_user, current_user
+from app.extensions.database import CRUDMixin
 
 
 blueprint = Blueprint('authentification', __name__)
@@ -67,8 +68,15 @@ def logout():
 @blueprint.get('/todo')
 @login_required
 def dashboard():
-    todos = Task.query.filter(Task.user_id == current_user.id).all()
+    todos = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('authentification/todo.html', todos=todos)
+
+
+@blueprint.get('/delete/<int:todoid>')
+def delete(todoid):
+    todo = Task.query.filter_by(id=todoid).first()
+    todo.delete()
+    return redirect(url_for('authentification.dashboard'))
 
 
 @blueprint.post('/todo')
@@ -89,3 +97,20 @@ def savedtodo():
     # db.session.add(todo)
     # db.session.commit()
     return redirect(url_for('authentification.dashboard'))
+
+
+@blueprint.route('/update/<int:todoid>', methods=['GET', 'POST'])
+def update(todoid):
+    todo = Task.query.filter_by(id=todoid).first()
+
+    if request.method == 'POST':
+        todo.name = request.form['name']
+
+        try:
+            db.session.commit()
+            return redirect('/todo')
+        except:
+            return 'There was an issue while updating that task'
+
+    else:
+        return render_template('authentification/update.html', todo=todo)
