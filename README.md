@@ -71,15 +71,15 @@ control of your day.
 
 ## How to clone this repository and install requirements
 
-`$ mkdir Project_Folder`
-`$ cd Project_Folder`
+`$ mkdir Folder`
+`$ cd Folder`
 `$ git clone https://github.com/danieltrier/Foundations-Daniel-Trier.git`
 `$ python3 -m venv venv`
 `On macOS and Linux run: $source venv/bin/activate`
 `On Windows run: $venv\Scripts\activate.bat`
 `pip install -r requirements.txt`
 
-## Add into the project enviroment variables
+## Add into the project enviroment variables in the .env file
 
 `FLASK_DEBUG=True`
 `DATABASE_URL=sqlite:///database.db`
@@ -92,8 +92,12 @@ control of your day.
 
 Open (http://127.0.0.1:5000/) to test locally.
 
-## How to test
+## How to test the code
 
-Easy to use tests are implemented into project. Just use code below to test.
+There are already easy to use tests implemented into project. Just use insert the command below into the terminal.
 
 `$ pytest -v`
+
+## Contributing and ideas
+
+For any suggestions and ideas how to upgrade project please contact me.
