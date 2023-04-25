@@ -8,7 +8,7 @@ class User(db.Model, CRUDMixin, UserMixin):
     last_name = db.Column(db.String(80), unique=True)
     first_name = db.Column(db.String(80), unique=True)
     e_mail = db.Column(db.String(150))
-    password = db.Column(db.String(80))
+    password = db.Column(db.String(1024))
     tasks = db.relationship('Task', backref='user', lazy=True)
 
 
