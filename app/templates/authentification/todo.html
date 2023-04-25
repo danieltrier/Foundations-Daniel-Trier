@@ -10,12 +10,12 @@
   <button type="submit">add</button>
 </form>
 
+{% if current_user.is_authenticated %}
 <ul>
   {% for todo in todos %}
   <li>{{ todo.id }}</li>
   <li>{{ todo.name }}</li>
   <li>{{ todo.date.strftime('%d.%m.%Y') }}</li>
   <li>{{ todo.time.strftime('%H:%M') }}</li>
-  {% endfor %}
 </ul>
-{% endblock %}
+{% endif %} {% endblock %}

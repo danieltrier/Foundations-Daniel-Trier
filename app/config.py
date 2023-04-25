@@ -3,5 +3,4 @@ from dotenv import load_dotenv
 
 load_dotenv()
 SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
-
-USERS_PER_PAGE = 1
+SECRET_KEY = environ.get('SECRET_KEY')

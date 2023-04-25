@@ -9,8 +9,8 @@ def index():
     return render_template('simple_pages/index.html')
 
 
-@blueprint.route('/users')
-def users():
+# @blueprint.route('/users')
+# def users():
     page_number = request.args.get('page', 1, type=int)
     users_pagination = User.query.paginate(
         page=page_number, per_page=current_app.config['USERS_PER_PAGE'])

@@ -1,8 +1,9 @@
 from app.extensions.database import db, CRUDMixin
 from datetime import datetime
+from flask_login import UserMixin
 
 
-class User(db.Model, CRUDMixin):
+class User(db.Model, CRUDMixin, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     last_name = db.Column(db.String(80), unique=True)
     first_name = db.Column(db.String(80), unique=True)

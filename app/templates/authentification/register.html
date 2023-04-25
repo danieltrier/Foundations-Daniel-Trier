@@ -3,46 +3,49 @@
   rel="stylesheet"
   href="{{url_for('static', filename='css/register.css')}}"
 />{% endblock %} {% block body %}
-<form action="#">
+<form method="POST">
   <div class="container">
     <h1>Register</h1>
     <p>Please fill to create an account.</p>
 
-    <label id="labelpadding" for="mail"><b>Email</b></label>
+    <label id="labelpadding" for="e_mail"><b>Email</b></label>
     <input
       type="text"
       placeholder="Enter Email"
-      name="mail"
-      id="mail"
+      name="e_mail"
+      id="e_mail"
       required
     />
 
-    <label for="pswd"><b>Password</b></label>
+    <label for="password"><b>Password</b></label>
     <input
       type="password"
       placeholder="Enter Password"
-      name="pswd"
-      id="pswd"
+      name="password"
+      id="password"
       required
     />
 
-    <label for="psw-rpd"><b>Repeat Password</b></label>
+    <label for="password_confirmation"><b>Repeat Password</b></label>
     <input
       type="password"
       placeholder="Repeat Password"
-      name="psw-rpd"
-      id="psw-rpd"
+      name="password_confirmation"
+      id="password_confirmation"
       required
     />
     <hr />
 
-    <button type="submit">Register</button>
+    <button type="submit" value="Sign Up">Register</button>
+    {% if error %}
+    <p style="color: tomato">{{ error }}</p>
+    {% endif %}
   </div>
 
   <div class="signin">
     <p>
       Already have an account?
-      <a href="{{url_for('authentification.login')}}">Sign in</a>.
+      <a href="{{url_for('authentification.get_login')}}">Sign in</a>.
     </p>
   </div>
 </form>

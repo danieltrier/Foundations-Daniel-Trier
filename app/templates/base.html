@@ -24,21 +24,23 @@
       <div class="container">
         <h1 class="logo">Taskbox</h1>
         <ul class="navigation">
+          {% if not current_user.is_authenticated %}
           <li>
             <a href="{{url_for('simple_pages.index')}}">Home</a>
           </li>
           <li>
-            <a href="{{url_for('authentification.login')}}">Login</a>
+            <a href="{{url_for('authentification.get_login')}}">Login</a>
           </li>
           <li>
-            <a href="{{url_for('authentification.register')}}">Registration</a>
+            <a href="{{url_for('authentification.get_register')}}"
+              >Registration</a
+            >
           </li>
+          {% else %}
           <li>
-            <a href="https://www.google.com/?client=safari">Profile</a>
+            <a href="{{ url_for('authentification.logout') }}">Logout</a>
           </li>
-          <li>
-            <a href="https://www.google.com/?client=safari">Dashboard</a>
-          </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
