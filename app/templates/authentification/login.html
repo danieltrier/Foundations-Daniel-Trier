@@ -28,7 +28,12 @@
 
     <hr />
 
-    <button type="submit" value=":ogin">Login</button>
+    <button type="submit" value=":Login">Login</button>
+    {% if error %}
+    <br />
+    <br />
+    <p style="color: tomato">{{ error }}</p>
+    {% endif %}
   </div>
 </form>
 {% endblock %}
