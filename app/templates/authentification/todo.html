@@ -1,40 +1,45 @@
 {% extends 'base.html' %} {% block title %}TASKBOX - TODO{% endblock %} {% block
-body %}
-<form method="POST">
-  <label for="name">Taskname:</label>
-  <input type="text" name="name" id="name" required />
-  <label for="date">Date:</label>
-  <input type="date" id="date" name="date" required />
-  <label for="time">Time:</label>
-  <input type="time" id="time" name="time" required />
-  <button type="submit">add</button>
-</form>
+style %}<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/todo.css')}}"
+/>{% endblock %}{% block body %}
+<div class="todo">
+  <form method="POST">
+    <label for="name">Taskname:</label>
+    <input type="text" name="name" id="name" maxlength="20" required />
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required />
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required />
+    <button type="submit">add</button>
+  </form>
 
-{% if current_user.is_authenticated %}
-<table>
-  <tr>
-    <th>Task</th>
-    <th>Date</th>
-    <th>Time</th>
-    <th colspan="2">Action</th>
-  </tr>
-  {% for todo in todos %}
-  <tr>
-    <td>{{ todo.name }}</td>
-    <td>{{ todo.date.strftime('%d.%m.%Y') }}</td>
-    <td>{{ todo.time.strftime('%H:%M') }}</td>
-    <td>
-      <a href="{{url_for('authentification.delete', todoid=todo.id)}}"
-        >Delete</a
-      >
-    </td>
-    <td>
-      <a href="{{url_for('authentification.update', todoid=todo.id)}}"
-        >Update</a
-      >
-    </td>
-  </tr>
+  {% if current_user.is_authenticated %}
+  <table>
+    <tr>
+      <th>Task</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th colspan="2">Action</th>
+    </tr>
+    {% for todo in todos %}
+    <tr>
+      <td>{{ todo.name }}</td>
+      <td>{{ todo.date.strftime('%d.%m.%Y') }}</td>
+      <td>{{ todo.time.strftime('%H:%M') }}</td>
+      <td>
+        <a href="{{url_for('authentification.delete', todoid=todo.id)}}"
+          >Delete</a
+        >
+      </td>
+      <td>
+        <a href="{{url_for('authentification.update', todoid=todo.id)}}"
+          >Update</a
+        >
+      </td>
+    </tr>
 
-  {% endfor %}
-</table>
+    {% endfor %}
+  </table>
+</div>
 {% endif %} {% endblock %}

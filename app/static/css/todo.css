@@ -1,0 +1,57 @@
+.todo {
+  padding-top: 50px;
+  padding-bottom: 25px;
+  margin: 150px auto;
+  background-color: darkcyan;
+  max-width: 800px;
+  text-align: center;
+  border-radius: 50px;
+}
+form {
+  width: 600px;
+  margin: 0 auto;
+}
+input {
+  margin-right: 40px;
+}
+table {
+  width: 600px;
+  height: 200px;
+  margin: 20px auto;
+
+  padding: 2px 2px;
+}
+td {
+  border: 1px solid whitesmoke;
+  padding: 2px 2px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+td a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-weight: bolder;
+}
+input {
+  border-radius: 50px;
+
+  box-shadow: none;
+}
+button[type="submit"] {
+  padding: 6px;
+  width: 30px;
+  box-shadow: none;
+  margin-left: -15px;
+  background-color: whitesmoke;
+  border-radius: 50px;
+  font-weight: bolder;
+
+  box-shadow: none;
+}
+a:hover {
+  color: black;
+}
+label {
+  font-weight: bolder;
+}
