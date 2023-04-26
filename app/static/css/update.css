@@ -25,3 +25,7 @@ input[type="submit"] {
   background-color: whitesmoke;
   font-weight: bolder;
 }
+input,
+button {
+  border: none;
+}

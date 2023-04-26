@@ -3,6 +3,10 @@ style %}<link
   rel="stylesheet"
   href="{{url_for('static', filename='css/todo.css')}}"
 />{% endblock %}{% block body %}
+<button id="hackermode">Hackermode</button>
+<div class="paragraph">
+  <p>You clicked the Hackermode <span id="countfunc">0</span> Times</p>
+</div>
 <div class="todo">
   <form method="POST">
     <label for="name">Taskname:</label>
@@ -11,7 +15,7 @@ style %}<link
     <input type="date" id="date" name="date" required />
     <label for="time">Time:</label>
     <input type="time" id="time" name="time" required />
-    <button type="submit">add</button>
+    <button id="addtodo" type="submit">add</button>
   </form>
 
   {% if current_user.is_authenticated %}
@@ -42,4 +46,99 @@ style %}<link
     {% endfor %}
   </table>
 </div>
-{% endif %} {% endblock %}
+{% endif %}
+<script>
+  let name_mode = "hacker";
+  document
+    .getElementById("hackermode")
+    .addEventListener("click", changetohackermode);
+  // document
+  // .getElementById("addtodo")
+  // .addEventListener("click", checkHackerCookie);
+
+  function changetohackermode() {
+    if (name_mode == "hacker") {
+      document.body.style.backgroundColor = "#000000";
+      const navi = document.querySelector("nav");
+      navi.style.border = "5px solid #AAFF00";
+      navi.style.color = "#AAFF00";
+      const formular = document.querySelector("form");
+      formular.style.border = "5px solid #AAFF00";
+      formular.style.color = "#AAFF00";
+      formular.style.backgroundColor = "#000000";
+      const tables = document.querySelector("table");
+      tables.style.border = "5px solid #AAFF00";
+      tables.style.color = "#AAFF00";
+      tables.style.backgroundColor = "#000000";
+      const unordered_lists = document.querySelector("ul");
+      unordered_lists.style.backgroundColor = "#000000";
+      unordered_lists.style.color = "#AAFF00";
+      const div_container = document.querySelector(".container");
+      div_container.style.backgroundColor = "#000000";
+      div_container.style.color = "AAFF00";
+      const links = document.querySelector("a");
+      links.style.color = "#AAFF00";
+      const tabledata = document.querySelectorAll("td, a");
+      tabledata.forEach((tabledata) => {
+        tabledata.style.backgroundColor = "#000000";
+        tabledata.style.color = "#AAFF00";
+        tabledata.style.border = "5px solid #AAFF00";
+      });
+
+      const inputs = document.querySelectorAll("input, button");
+      inputs.forEach((inputs) => {
+        inputs.style.backgroundColor = "#000000";
+        inputs.style.color = "#AAFF00";
+        inputs.style.border = "5px solid #AAFF00";
+      });
+      const todos = document.querySelector(".todo");
+      todos.style.backgroundColor = "#000000";
+      todos.style.border = "5px solid #AAFF00";
+      const counter = document.querySelector(".paragraph");
+      counter.style.border = "5px solid #AAFF00";
+      counter.style.color = "#AAFF00";
+      counter.style.backgroundColor = "#000000";
+    }
+  }
+
+  //function setHackerCookie() {
+  //const d = new Date();
+  //d.setTime(d.getTime() + 24 * 60 * 60 * 1000);
+  //let expires = "expires=" + d.toUTCString();
+  //document.cookie = "Hacker" + "=" + "true" + ";" + expires + ";path=/";
+  //}
+
+  //function getHackerCookie() {
+  //let name = "Hacker" + "=";
+  //let decodedCookie = decodeURIComponent(document.cookie);
+  //let ca = decodedCookie.split(";");
+  //for (let i = 0; i < ca.length; i++) {
+  //let c = ca[i];
+  //while (c.charAt(0) == " ") {
+  //c = c.substring(1);
+  //}
+  //if (c.indexOf(name) == 0) {
+  //return c.substring(name.length, c.length);
+  //}
+  //}
+  //return "";
+  //}
+
+  //function checkHackerCookie() {
+  // let hacker = getHackerCookie();
+  //if (hacker != "") {
+  //changetohackermode();
+  // }
+  // }
+  //let x = document.cookie;
+  //console.log(x);
+  var count = 0;
+  var button = document.getElementById("hackermode");
+  var display = document.getElementById("countfunc");
+
+  button.onclick = function () {
+    count++;
+    display.innerHTML = count;
+  };
+</script>
+{% endblock %}
