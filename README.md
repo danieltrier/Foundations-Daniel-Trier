@@ -66,8 +66,8 @@ control of your day.
 
 ### Part 5: Client-Side JavaScript
 
-- Include JavaScript on the client-side - work in progress
-- Let users do anything on the page that uses JavaScript to manipulate the DOM. - work in progress
+- Include JavaScript on the client-side - done
+- Let users do anything on the page that uses JavaScript to manipulate the DOM. - done
 
 ## How to clone this repository and install requirements
 
